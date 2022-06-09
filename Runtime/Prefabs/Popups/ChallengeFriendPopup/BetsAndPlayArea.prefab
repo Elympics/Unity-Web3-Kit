@@ -1007,8 +1007,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6388862538324101756}
-  - component: {fileID: 6388862538324101754}
   - component: {fileID: 6388862538324101755}
+  - component: {fileID: 6457466438564805318}
   m_Layer: 5
   m_Name: Toggle_Left
   m_TagString: Untagged
@@ -1038,23 +1038,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 19.39998}
   m_SizeDelta: {x: 108, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6388862538324101754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6388862538324101757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7507defa746d9748a2887121162c852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ticketPrice: 1
-  sliderFillValue: 0
-  targetImage: {fileID: 940905931}
-  offToggleScale: 0.8
-  prizeView: {fileID: 6388862539040558895}
 --- !u!114 &6388862538324101755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,18 +1082,35 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6388862539245035164}
-        m_TargetAssemblyTypeName: TicketPriceController, Speculos
+      - m_Target: {fileID: 2361676822046319816}
+        m_TargetAssemblyTypeName: TicketPriceController, Assembly-CSharp
         m_MethodName: SetupToggles
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6388862538324101754}
-          m_ObjectArgumentAssemblyTypeName: PriceToggle, Speculos
+          m_ObjectArgument: {fileID: 6457466438564805318}
+          m_ObjectArgumentAssemblyTypeName: PriceToggle, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6457466438564805318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6388862538324101757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882618aa7434d5840a67b71870ec9381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ticketPrice: 1
+  sliderFillValue: 0
+  targetImage: {fileID: 940905931}
+  offToggleScale: 0.8
+  prizeView: {fileID: 6388862539040558895}
 --- !u!1 &6388862538449343123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,8 +1255,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6388862538548070665}
-  - component: {fileID: 6388862538548070664}
   - component: {fileID: 6388862538548070679}
+  - component: {fileID: 5843838406164118686}
   m_Layer: 5
   m_Name: Toggle_Center
   m_TagString: Untagged
@@ -1286,23 +1286,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2.2, y: 19.4}
   m_SizeDelta: {x: 108, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6388862538548070664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6388862538548070666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7507defa746d9748a2887121162c852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ticketPrice: 3
-  sliderFillValue: 0.5
-  targetImage: {fileID: 1356740816}
-  offToggleScale: 0.8
-  prizeView: {fileID: 6388862539040558895}
 --- !u!114 &6388862538548070679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,18 +1330,35 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6388862539245035164}
-        m_TargetAssemblyTypeName: TicketPriceController, Speculos
+      - m_Target: {fileID: 2361676822046319816}
+        m_TargetAssemblyTypeName: TicketPriceController, Assembly-CSharp
         m_MethodName: SetupToggles
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6388862538548070664}
-          m_ObjectArgumentAssemblyTypeName: PriceToggle, Speculos
+          m_ObjectArgument: {fileID: 5843838406164118686}
+          m_ObjectArgumentAssemblyTypeName: PriceToggle, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5843838406164118686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6388862538548070666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882618aa7434d5840a67b71870ec9381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ticketPrice: 3
+  sliderFillValue: 0.5
+  targetImage: {fileID: 1356740816}
+  offToggleScale: 0.8
+  prizeView: {fileID: 6388862539040558895}
 --- !u!1 &6388862538738638501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,8 +1368,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6388862538738638500}
-  - component: {fileID: 6388862538738638498}
   - component: {fileID: 6388862538738638499}
+  - component: {fileID: 3577637134243295676}
   m_Layer: 5
   m_Name: Toggle_Right
   m_TagString: Untagged
@@ -1399,23 +1399,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 19.39998}
   m_SizeDelta: {x: 108, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6388862538738638498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6388862538738638501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7507defa746d9748a2887121162c852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ticketPrice: 10
-  sliderFillValue: 1
-  targetImage: {fileID: 1949419544}
-  offToggleScale: 0.8
-  prizeView: {fileID: 6388862539040558895}
 --- !u!114 &6388862538738638499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1460,18 +1443,35 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6388862539245035164}
-        m_TargetAssemblyTypeName: TicketPriceController, Speculos
+      - m_Target: {fileID: 2361676822046319816}
+        m_TargetAssemblyTypeName: TicketPriceController, Assembly-CSharp
         m_MethodName: SetupToggles
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6388862538738638498}
-          m_ObjectArgumentAssemblyTypeName: PriceToggle, Speculos
+          m_ObjectArgument: {fileID: 3577637134243295676}
+          m_ObjectArgumentAssemblyTypeName: PriceToggle, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3577637134243295676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6388862538738638501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882618aa7434d5840a67b71870ec9381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ticketPrice: 10
+  sliderFillValue: 1
+  targetImage: {fileID: 1949419544}
+  offToggleScale: 0.8
+  prizeView: {fileID: 6388862539040558895}
 --- !u!1 &6388862538811355287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,7 +1769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6388862539245035167}
   - component: {fileID: 6388862539245035165}
-  - component: {fileID: 6388862539245035164}
+  - component: {fileID: 2361676822046319816}
   m_Layer: 5
   m_Name: Ticket_Price
   m_TagString: Untagged
@@ -1809,7 +1809,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6388862539245035152}
   m_CullTransparentMesh: 1
---- !u!114 &6388862539245035164
+--- !u!114 &2361676822046319816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1818,14 +1818,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6388862539245035152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8114dc53df515ea4e9e161b9b53d4c47, type: 3}
+  m_Script: {fileID: 11500000, guid: f5491a3d64e09ee429e2aa995dd6d8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   toggles:
-  - {fileID: 6388862538324101754}
-  - {fileID: 6388862538548070664}
-  - {fileID: 6388862538738638498}
-  defaultPrice: {fileID: 6388862538548070664}
+  - {fileID: 6457466438564805318}
+  - {fileID: 5843838406164118686}
+  - {fileID: 3577637134243295676}
+  defaultPrice: {fileID: 5843838406164118686}
   priceSlider: {fileID: 1238339772}
   enterFeeLabel: {fileID: 3924326597207433271}
   payoutLabel: {fileID: 6388862539040558895}
