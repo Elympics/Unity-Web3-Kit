@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 146953079416111038, guid: c6256c6e2831af145981f1822faecf70, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 087ccb41b4f53724f82435b555d112e9, type: 3}
     - target: {fileID: 146953080027304628, guid: c6256c6e2831af145981f1822faecf70, type: 3}
       propertyPath: m_Name
-      value: ButtonPrimaryAction
+      value: ButtonPrimaryAction Variant
       objectReference: {fileID: 0}
     - target: {fileID: 146953080027304629, guid: c6256c6e2831af145981f1822faecf70, type: 3}
       propertyPath: m_Pivot.x

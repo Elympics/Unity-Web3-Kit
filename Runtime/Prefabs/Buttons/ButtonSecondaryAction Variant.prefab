@@ -10,10 +10,10 @@ PrefabInstance:
     - target: {fileID: 146953079416111038, guid: c6256c6e2831af145981f1822faecf70, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e0829001fff01a543845c316d11a755c, type: 3}
+      objectReference: {fileID: 21300000, guid: 4d717f89bb9609840961cc43800ebcef, type: 3}
     - target: {fileID: 146953079493683777, guid: c6256c6e2831af145981f1822faecf70, type: 3}
       propertyPath: m_fontSize
-      value: 38
+      value: 37.8
       objectReference: {fileID: 0}
     - target: {fileID: 146953079493683777, guid: c6256c6e2831af145981f1822faecf70, type: 3}
       propertyPath: m_fontAsset
@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 4345666618639243100, guid: 96845baccf27bfa4481035f8fb9df79b, type: 2}
     - target: {fileID: 146953080027304628, guid: c6256c6e2831af145981f1822faecf70, type: 3}
       propertyPath: m_Name
-      value: ButtonSecondaryAction
+      value: ButtonSecondaryAction Variant
       objectReference: {fileID: 0}
     - target: {fileID: 146953080027304629, guid: c6256c6e2831af145981f1822faecf70, type: 3}
       propertyPath: m_Pivot.x
