@@ -12,7 +12,7 @@ public class AudioController : MonoBehaviour
 	[SerializeField] private Sprite soundOnLoud = null;
 	[SerializeField] private Sprite soundOn = null;
 	[SerializeField] private Sprite soundOff = null;
-	[SerializeField] private AudioMixerGroup masterGroup = null;
+	[SerializeField] private AudioMixerGroup mixerGroup = null;
 	[SerializeField] private Slider slider = null;
 
 	[Header("Parameters")]
@@ -27,6 +27,9 @@ public class AudioController : MonoBehaviour
 
 	private void Awake()
 	{
+		if (mixerGroup == null)
+			Debug.LogError("[Web3Kit] Unassigned reference to audio mixer group in AudioController.\nCreate a new AudioMixer and assign the reference.");
+
 		dBValueRange = Mathf.Abs(mindB) + Mathf.Abs(maxdB);
 
 		UpdateAudioDB(50);
@@ -37,7 +40,7 @@ public class AudioController : MonoBehaviour
 		value0100 = Mathf.Round(value0100);
 
 		float newVolume = mindB + (dBValueRange * volumeScaleCurve.Evaluate(value0100 / 100.0f));
-		masterGroup.audioMixer.SetFloat(MASTER_VOLUME, newVolume);
+		mixerGroup?.audioMixer.SetFloat(MASTER_VOLUME, newVolume);
 		SetSoundSprite(value0100);
 
 		slider.value = value0100;
@@ -55,7 +58,8 @@ public class AudioController : MonoBehaviour
 
 	public void ToggleAudio()
 	{
-		masterGroup.audioMixer.GetFloat(MASTER_VOLUME, out float currentVolume);
+		float currentVolume = 0;
+		mixerGroup?.audioMixer.GetFloat(MASTER_VOLUME, out currentVolume);
 
 		if (currentVolume == mindB)
 		{

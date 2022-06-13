@@ -6,7 +6,6 @@ public class MenuSceneInstaller : MonoInstaller
 {
 	public override void InstallBindings()
 	{
-		Container.Bind<GameMetaData>().AsSingle().NonLazy();
 		Container.Bind<ElympicsRoomsAPIController>().FromComponentInHierarchy().AsSingle().NonLazy();
 		Container.Bind<MainMenuController>().FromComponentInHierarchy().AsSingle().NonLazy();
 		Container.Bind<TicketPriceController>().FromComponentInHierarchy().AsSingle().NonLazy();

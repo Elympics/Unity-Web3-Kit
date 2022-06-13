@@ -7,9 +7,11 @@ public class ProjectInstaller : MonoInstaller
 
 	public override void InstallBindings()
 	{
+		Container.Bind<GameMetaData>().AsSingle().NonLazy();
+
 		Container.Bind<IScenesLoader>().FromInstance(scenesLoader).AsSingle().NonLazy();
 		Container.Bind<IDefaultButtonSoundsProvider>().To<DefaultButtonSoundsProvider>().AsSingle().NonLazy();
-		/////////////////////		
+
 		Container.Bind<IWalletAPI>().To<
 #if UNITY_EDITOR
 			UnityEditorWalletAPI
@@ -17,7 +19,6 @@ public class ProjectInstaller : MonoInstaller
 			MetaMaskAPI
 #endif
 			>().AsSingle().NonLazy();
-		//////////////////////
 		Container.Bind<IOrbiesSmartContractAPI>().To<
 #if UNITY_EDITOR
 			UnityEditorSmartContract
@@ -25,7 +26,6 @@ public class ProjectInstaller : MonoInstaller
 			EthereumABIIntegration
 #endif
 			>().AsSingle().NonLazy();
-		///////////////////////
 		Container.Bind<ITokenAPI>().To<
 #if UNITY_EDITOR
 			UnityEditorTokenConnect
