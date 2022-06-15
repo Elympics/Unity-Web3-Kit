@@ -2,11 +2,11 @@
     "name": "Web3Kit",
     "rootNamespace": "",
     "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-        "GUID:112662fcaa659d540b0f85a1715405fb",
-        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:98c20d83c9beb3344bdbd3db8ff8d852"
+        "Unity.TextMeshPro",
+        "Zenject",
+        "DOTween.Modules",
+        "UniRx",
+        "Elympics"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
