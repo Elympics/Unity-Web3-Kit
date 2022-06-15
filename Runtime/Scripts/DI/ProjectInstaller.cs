@@ -19,6 +19,7 @@ public class ProjectInstaller : MonoInstaller
 			MetaMaskAPI
 #endif
 			>().AsSingle().NonLazy();
+
 		Container.Bind<IOrbiesSmartContractAPI>().To<
 #if UNITY_EDITOR
 			UnityEditorSmartContract
@@ -26,6 +27,7 @@ public class ProjectInstaller : MonoInstaller
 			EthereumABIIntegration
 #endif
 			>().AsSingle().NonLazy();
+
 		Container.Bind<ITokenAPI>().To<
 #if UNITY_EDITOR
 			UnityEditorTokenConnect
