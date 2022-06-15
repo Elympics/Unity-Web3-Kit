@@ -23,6 +23,18 @@ namespace Web3Kit
 				Debug.LogError(error);
 				throw new IOException("[Web3Kit:FirstTimeSetup] Renaming _Resources to Resources failed!");
 			}
+
+			ReassignReferences();
+		}
+
+		[MenuItem("Tools/Web3Kit/Reassign references")]
+		public static void ReassignReferences()
+		{
+			var projectInstaller = Resources.Load<ProjectInstaller>("ProjectContext");
+			var newScenesLoader = AssetDatabase.LoadAssetAtPath<ScenesLoader>(DestinationPath + "/PopupsData/ScenesLoader.asset");
+			projectInstaller.scenesLoader = newScenesLoader;
+			EditorUtility.SetDirty(projectInstaller);
+			AssetDatabase.SaveAssetIfDirty(projectInstaller);
 		}
 	}
 }

@@ -3,7 +3,7 @@ using Zenject;
 
 public class ProjectInstaller : MonoInstaller
 {
-	[SerializeField] private ScenesLoader scenesLoader = null;
+	public ScenesLoader scenesLoader = null;
 
 	public override void InstallBindings()
 	{
