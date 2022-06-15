@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f4bead97ccba24ab2415a6e573c578, type: 3}
   m_Name: ButtonStyle
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 6bbcba4e267be464998897741b81d508, type: 3}
+  sprite: {fileID: 21300000, guid: 087ccb41b4f53724f82435b555d112e9, type: 3}
