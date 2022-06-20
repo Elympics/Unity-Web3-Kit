@@ -6,7 +6,6 @@ namespace Web3Kit
 {
 	public class FirstTimeSetupLauncher
 	{
-		private const string SETUP_EDITOR_PREFS_KEY = "Web3KitFirstTimeSetup";
 		private const string SKIP_EDITOR_PREFS_KEY = "Web3KitSkipSetup";
 
 		public static bool DidRunFirstTimeSetup() => AssetDatabase.LoadAssetAtPath(FirstTimeSetup.DestinationPath, typeof(Object)) != null;
