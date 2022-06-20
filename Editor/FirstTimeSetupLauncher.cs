@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEngine;
 
 namespace Web3Kit
 {
@@ -8,9 +9,7 @@ namespace Web3Kit
 		private const string SETUP_EDITOR_PREFS_KEY = "Web3KitFirstTimeSetup";
 		private const string SKIP_EDITOR_PREFS_KEY = "Web3KitSkipSetup";
 
-		public static bool DidRunFirstTimeSetup() => EditorPrefs.GetBool(SETUP_EDITOR_PREFS_KEY);
-
-		public static void MarkFirstTimeSetupRun(bool value) => EditorPrefs.SetBool(SETUP_EDITOR_PREFS_KEY, value);
+		public static bool DidRunFirstTimeSetup() => AssetDatabase.LoadAssetAtPath(FirstTimeSetup.DestinationPath, typeof(Object)) != null;
 
 		public static bool ShouldSkipFirstTimeSetup() => EditorPrefs.GetBool(SKIP_EDITOR_PREFS_KEY);
 

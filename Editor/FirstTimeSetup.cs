@@ -6,7 +6,7 @@ namespace Web3Kit
 {
 	public class FirstTimeSetup : EditorWindow
 	{
-		private const string DestinationPath = "Assets/Web3Kit";
+		public const string DestinationPath = "Assets/Web3Kit";
 
 		private ElympicsRoomAPIConfig roomApiConfig;
 		private SmartContractConfig smartContractConfig;
@@ -39,8 +39,6 @@ namespace Web3Kit
 			}
 
 			ReassignReferences();
-
-			FirstTimeSetupLauncher.MarkFirstTimeSetupRun(success);
 
 			roomApiConfig = Resources.Load<ElympicsRoomAPIConfig>(ElympicsRoomAPIConfig.PATH_IN_RESOURCES);
 			smartContractConfig = Resources.Load<SmartContractConfig>(SmartContractConfig.PATH_IN_RESOURCES);
