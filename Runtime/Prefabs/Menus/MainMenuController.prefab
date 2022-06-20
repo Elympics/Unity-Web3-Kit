@@ -3423,6 +3423,10 @@ MonoBehaviour:
   authenticatorClientError: {fileID: 11400000, guid: b8ccf218003f1ce41841c6f2839464ff, type: 2}
   matchmakingQueueBase: Default
   matchmakingQueueFree: Free
+  objectsToHideIfNotUsingBlockchain:
+  - {fileID: 7908979425952671351}
+  - {fileID: 7908979426246807261}
+  - {fileID: 7908979425458213174}
 --- !u!1 &7908979426323459815
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class WalletConnectionSceneController : MonoBehaviour
 	[SerializeField] private GameObject selectionWindow = null;
 	[SerializeField] private GameObject connectingWindow = null;
 	[SerializeField] private TextMeshProUGUI loadingText = null;
+	[SerializeField] private GameObject metaMaskButton = null;
+	[SerializeField] private GameObject playAsGuestButton = null;
 
 	[Header("Loading texts")]
 	[SerializeField] private string connectingMetamaskText = "Logging...";
@@ -22,18 +24,23 @@ public class WalletConnectionSceneController : MonoBehaviour
 	private ITokenAPI tokenAPI;
 	private IWalletAPI walletApi;
 	private IScenesLoader scenesLoader;
+	private SmartContractConfig smartContractConfig;
 	private GameObject[] allWindows;
 
 	private const int minimalTokenAllowedValue = 10;
 
 	[Inject]
-	public void Inject(IWalletAPI walletApi, IOrbiesSmartContractAPI smartContractAPI, ITokenAPI tokenAPI, IScenesLoader scenesLoader, SCController controller)
+	public void Inject(IWalletAPI walletApi, IOrbiesSmartContractAPI smartContractAPI, ITokenAPI tokenAPI, IScenesLoader scenesLoader, SCController controller, SmartContractConfig smartContractConfig)
 	{
 		this.controller = controller;
 		this.smartContractAPI = smartContractAPI;
 		this.tokenAPI = tokenAPI;
 		this.walletApi = walletApi;
 		this.scenesLoader = scenesLoader;
+		this.smartContractConfig = smartContractConfig;
+
+		metaMaskButton.SetActive(smartContractConfig.useSmartContract);
+		playAsGuestButton.SetActive(!smartContractConfig.useSmartContract);
 
 		allWindows = new GameObject[] { selectionWindow, connectingWindow };
 	}
@@ -48,6 +55,7 @@ public class WalletConnectionSceneController : MonoBehaviour
 #endif
 	}
 
+	[ReferencedByUnity]
 	public void ConnectButton()
 	{
 		smartContractAPI.Init();
@@ -60,6 +68,11 @@ public class WalletConnectionSceneController : MonoBehaviour
 		StartCoroutine(ConnectionSequence());
 	}
 
+	[ReferencedByUnity]
+	public void PlayAsGuest()
+	{
+		StartGame();
+	}
 
 	public IEnumerator ConnectionSequence()
 	{

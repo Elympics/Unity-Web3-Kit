@@ -17,22 +17,28 @@ public class MainMenuController : MonoBehaviour
 	[SerializeField] private ErrorPopupData authenticatorClientError = null;
 	[SerializeField] private string matchmakingQueueBase = "Default";
 	[SerializeField] private string matchmakingQueueFree = "Free";
+	[SerializeField] private GameObject[] objectsToHideIfNotUsingBlockchain;
 
 	private SCController controller;
 	private ElympicsLobbyClient lobbyClient;
 	private IScenesLoader scenesLoader;
 	private PopupsManager popupsManager = null;
+	private SmartContractConfig smartContractConfig;
 	private GameLoadingScreenPopup popup;
 
 	[Inject]
-	private void Inject(IScenesLoader scenesLoader, PopupsManager popupsManager, SCController controller)
+	private void Inject(IScenesLoader scenesLoader, PopupsManager popupsManager, SCController controller, SmartContractConfig smartContractConfig)
 	{
 		this.controller = controller;
 		this.scenesLoader = scenesLoader;
 		this.popupsManager = popupsManager;
+		this.smartContractConfig = smartContractConfig;
 
 		lobbyClient = FindObjectOfType<ElympicsLobbyClient>();
 		lobbyClient.Authenticated += HandleAuthenticated;
+
+		foreach (var element in objectsToHideIfNotUsingBlockchain)
+			element.SetActive(smartContractConfig.useSmartContract);
 
 		StartCoroutine(SetupNicknameView());
 	}

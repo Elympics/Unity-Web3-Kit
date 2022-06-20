@@ -10,6 +10,7 @@ namespace Web3Kit
 		private const string DestinationPath = "Assets/Web3Kit";
 
 		private ElympicsRoomAPIConfig roomApiConfig;
+		private SmartContractConfig smartContractConfig;
 
 		[MenuItem("Tools/Web3Kit/First time setup")]
 		public static void Init()
@@ -17,21 +18,21 @@ namespace Web3Kit
 			var config = Resources.Load<FirstTimeSetupConfig>("FirstTimeSetupConfig");
 			var path = AssetDatabase.GetAssetPath(config.FolderToCopy);
 			if (!AssetDatabase.CopyAsset(path, DestinationPath))
-				throw new IOException("[Web3Kit:FirstTimeSetup] Copying files failed!");
+				Debug.LogError("[Web3Kit:FirstTimeSetup] Copying files failed!");
 
 			AssetDatabase.ImportAsset(DestinationPath);
 			var error = AssetDatabase.RenameAsset(DestinationPath + "/_Resources", "Resources");
 			if (!string.IsNullOrEmpty(error))
 			{
 				Debug.LogError(error);
-				throw new IOException("[Web3Kit:FirstTimeSetup] Renaming _Resources to Resources failed!");
+				Debug.LogError("[Web3Kit:FirstTimeSetup] Renaming _Resources to Resources failed!");
 			}
 
 			ReassignReferences();
 
-
 			var window = GetWindow<FirstTimeSetup>();
 			window.roomApiConfig = Resources.Load<ElympicsRoomAPIConfig>(ElympicsRoomAPIConfig.PATH_IN_RESOURCES);
+			window.smartContractConfig = Resources.Load<SmartContractConfig>(SmartContractConfig.PATH_IN_RESOURCES);
 			window.Show();
 		}
 
@@ -53,13 +54,17 @@ namespace Web3Kit
 			GUILayout.Label("Let's run a quick setup, you can do this manually by editing scriptable objects in the Web3Kit folder. " +
 				"If you don't know what to set for something, just leave it empty and come back later.", EditorStyles.wordWrappedLabel);
 
-			var uri = EditorGUILayout.TextField("Elympics Room API uri", roomApiConfig.Uri);
-			if (uri != roomApiConfig.Uri)
+			roomApiConfig.Uri = EditorGUILayout.TextField("Elympics Room API uri", roomApiConfig.Uri);
+			AssetDatabase.SaveAssetIfDirty(roomApiConfig);
+
+			smartContractConfig.useSmartContract = EditorGUILayout.Toggle("Use blockchain integration?", smartContractConfig.useSmartContract);
+			if (smartContractConfig.useSmartContract)
 			{
-				roomApiConfig.Uri = uri;
-				EditorUtility.SetDirty(roomApiConfig);
-				AssetDatabase.SaveAssetIfDirty(roomApiConfig);
+				GUILayout.Label("New to web3? You can set up this section later and use your game in play for free mode.", EditorStyles.wordWrappedLabel);
+				smartContractConfig.smartContractAddress = EditorGUILayout.TextField("Smart contract address", smartContractConfig.smartContractAddress);
+				smartContractConfig.chainAddress = EditorGUILayout.TextField("Chain address", smartContractConfig.chainAddress);
 			}
+			AssetDatabase.SaveAssetIfDirty(smartContractConfig);
 
 			GUILayout.Label("Next step: open your elympics config and create a new game by clicking the button below or using Tools/Elympics/Manage games in Elympics.", EditorStyles.wordWrappedLabel);
 			if (GUILayout.Button("Manage games in Elympics"))
