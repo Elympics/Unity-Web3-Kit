@@ -69,6 +69,9 @@ namespace Web3Kit
 			GUILayout.Label("Next step: open your elympics config and create a new game by clicking the button below or using Tools/Elympics/Manage games in Elympics.", EditorStyles.wordWrappedLabel);
 			if (GUILayout.Button("Manage games in Elympics"))
 				OpenManageGamesInElympicsWindow();
+			
+			GUILayout.Label("Drag and drop TitleScreenController and MainMenuController from " + DestinationPath + "/Prefabs/ to your scenes " +
+				"or start with " + DestinationPath + "/Scenes/. Remember to add them to build settings!", EditorStyles.wordWrappedLabel);
 		}
 
 		// TODO: make OpenManageGamesInElympicsWindow public in Elympic SDK

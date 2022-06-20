@@ -1721,7 +1721,7 @@ GameObject:
   - component: {fileID: 344686827649704683}
   - component: {fileID: 344686827649704682}
   m_Layer: 0
-  m_Name: WalletConnectionController
+  m_Name: TitleScreenController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
