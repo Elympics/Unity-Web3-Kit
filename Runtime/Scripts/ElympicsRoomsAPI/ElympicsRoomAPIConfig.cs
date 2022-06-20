@@ -5,7 +5,5 @@ public class ElympicsRoomAPIConfig : ScriptableObject
 {
 	public const string PATH_IN_RESOURCES = "Elympics/ElympicsRoomAPIConfig";
 
-	[SerializeField] private string uri = "";
-
-	public string Uri => uri;
+	public string Uri = "";
 }
