@@ -12,6 +12,12 @@ public class ProjectInstaller : MonoInstaller
 		Container.Bind<IScenesLoader>().FromInstance(scenesLoader).AsSingle().NonLazy();
 		Container.Bind<IDefaultButtonSoundsProvider>().To<DefaultButtonSoundsProvider>().AsSingle().NonLazy();
 
+		var config = Resources.Load<ElympicsRoomAPIConfig>(ElympicsRoomAPIConfig.PATH_IN_RESOURCES);
+		if (config == null)
+			Debug.LogError("[Web3Kit:RoomAPI] Config not found! Did you run the first time setup?");
+
+		Container.Bind<ElympicsRoomAPIConfig>().FromInstance(config).AsSingle().NonLazy();
+
 		Container.Bind<IWalletAPI>().To<
 #if UNITY_EDITOR
 			UnityEditorWalletAPI

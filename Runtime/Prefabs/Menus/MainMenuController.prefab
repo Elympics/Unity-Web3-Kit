@@ -1336,7 +1336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elympicsLobbyClient: {fileID: 7908979426272742789}
-  uri: https://api-stg.clashoforbs.com/api/v1
+  uri: 
 --- !u!1 &7908979425083877438
 GameObject:
   m_ObjectHideFlags: 0

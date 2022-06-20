@@ -68,11 +68,27 @@ namespace ElympicsRoomsAPI
 		}
 
 		[Inject]
-		private void Inject(IWalletAPI walletApi, GameMetaData gameMetaData)
+		private void Inject(IWalletAPI walletApi, GameMetaData gameMetaData, ElympicsRoomAPIConfig config)
 		{
 			this.walletApi = walletApi;
 			this.gameMetaData = gameMetaData;
+			ValidateUri(config);
 			getWalletAddressHandler = new ApiCallHandler(HandleWalletAddress, HandleError);
+		}
+
+		private void ValidateUri(ElympicsRoomAPIConfig config)
+		{
+			if (config != null)
+			{
+				if (string.IsNullOrEmpty(config.Uri) || !Uri.IsWellFormedUriString(config.Uri, UriKind.Absolute))
+					Debug.LogError("[Web3Kit:RoomAPI] Uri provided in the Room API Config is invalid! Config is at Resources/" + ElympicsRoomAPIConfig.PATH_IN_RESOURCES);
+				else
+					uri = config.Uri;
+			}
+			else
+			{
+				Debug.LogError("[Web3Kit:RoomAPI] Config not found! Did you run first time setup?");
+			}
 		}
 
 		//Debug tests only
