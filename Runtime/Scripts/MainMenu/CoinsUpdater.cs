@@ -14,13 +14,17 @@ public class CoinsUpdater : MonoBehaviour
 	[Header("Scene References")]
 	[SerializeField] private TextMeshProUGUI coinsBalance = null;
 	[SerializeField] private float refreshingCoinStatusInSeconds = 3;
+
 	private SCController controller;
+	private SmartContractConfig smartContractConfig;
 
 	[Inject]
-	private void Inject(SCController controller)
+	private void Inject(SCController controller, SmartContractConfig smartContractConfig)
 	{
 		this.controller = controller;
+		this.smartContractConfig = smartContractConfig;
 	}
+
 	private void Start()
 	{
 		controller.Model.TokenBalance.Subscribe(tokenBalance =>
@@ -28,7 +32,9 @@ public class CoinsUpdater : MonoBehaviour
 			coinsBalance.text = controller.Model.TokenBalance.ToString();
 			coinsBalance.transform.DOShakeScale(0.1f, 0.2f);
 		});
-		StartCoroutine(AutomaticRefresherWalletBalance());
+
+		if (smartContractConfig.useSmartContract)
+			StartCoroutine(AutomaticRefresherWalletBalance());
 	}
 
 	public void OpenExternalTokenWebsite()

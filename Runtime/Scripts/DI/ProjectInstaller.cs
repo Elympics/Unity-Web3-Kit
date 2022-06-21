@@ -22,28 +22,21 @@ public class ProjectInstaller : MonoInstaller
 			Debug.LogError("[Web3Kit:SmartContract] Config not found! Did you run the first time setup?");
 		Container.Bind<SmartContractConfig>().FromInstance(scConfig).AsSingle().NonLazy();
 
-		Container.Bind<IWalletAPI>().To<
+		if (scConfig.useSmartContract
 #if UNITY_EDITOR
-			UnityEditorWalletAPI
-#else
-			MetaMaskAPI
+			&& false
 #endif
-			>().AsSingle().NonLazy();
-
-		Container.Bind<IOrbiesSmartContractAPI>().To<
-#if UNITY_EDITOR
-			UnityEditorSmartContract
-#else
-			EthereumABIIntegration
-#endif
-			>().AsSingle().NonLazy();
-
-		Container.Bind<ITokenAPI>().To<
-#if UNITY_EDITOR
-			UnityEditorTokenConnect
-#else
-			TokenAPI
-#endif
-		 >().AsSingle().NonLazy();
+			)
+		{
+			Container.Bind<IWalletAPI>().To<MetaMaskAPI>().AsSingle().NonLazy();
+			Container.Bind<IOrbiesSmartContractAPI>().To<EthereumABIIntegration>().AsSingle().NonLazy();
+			Container.Bind<ITokenAPI>().To<TokenAPI>().AsSingle().NonLazy();
+		}
+		else
+		{
+			Container.Bind<IWalletAPI>().To<UnityEditorWalletAPI>().AsSingle().NonLazy();
+			Container.Bind<IOrbiesSmartContractAPI>().To<UnityEditorSmartContract>().AsSingle().NonLazy();
+			Container.Bind<ITokenAPI>().To<UnityEditorTokenConnect>().AsSingle().NonLazy();
+		}
 	}
 }

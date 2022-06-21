@@ -45,14 +45,21 @@ public class MainMenuController : MonoBehaviour
 
 	private IEnumerator SetupNicknameView()
 	{
-		var nicknameStage = new NicknameStage(controller);
-		yield return nicknameStage.Start();
-		if (nicknameStage.Success)
-			HandlePlayerNameChanged(controller.Model.NickName.Value);
-		else
-			controller.UseGuestName();
-
 		SubscribeNicknameView();
+
+		if (smartContractConfig.useSmartContract)
+		{
+			var nicknameStage = new NicknameStage(controller);
+			yield return nicknameStage.Start();
+			if (nicknameStage.Success)
+				HandlePlayerNameChanged(controller.Model.NickName.Value);
+			else
+				controller.UseGuestName();
+		}
+		else
+		{
+			controller.UseGuestName();
+		}
 	}
 
 	private void HandlePlayerNameChanged(string name)

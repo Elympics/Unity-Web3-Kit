@@ -12,6 +12,5 @@ public class NicknameStage : Stage, IStage
 	{
 		yield return controller.GetNickname(HandleError);
 		IsConditionMet = !string.IsNullOrEmpty(controller.Model.NickName.Value);
-		Debug.Log($"Has Nickname: {Success}");
 	}
 }
