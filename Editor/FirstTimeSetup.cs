@@ -29,6 +29,17 @@ namespace Web3Kit
 				success = false;
 			}
 
+			if (success)
+			{
+				var moveError = AssetDatabase.MoveAsset(DestinationPath + "/WebGLTemplates", "Assets/WebGLTemplates");
+				if (!string.IsNullOrEmpty(moveError))
+				{
+					Debug.LogError(moveError);
+					Debug.LogError("[Web3Kit:FirstTimeSetup] Adding WebGLTemplates failed. Did you already create a WebGLTemplate? " +
+						"\nIf yes, move Metamask template manually from " + DestinationPath + "/WebGLTemplates");
+				}
+			}
+
 			AssetDatabase.ImportAsset(DestinationPath);
 			var error = AssetDatabase.RenameAsset(DestinationPath + "/_Resources", "Resources");
 			if (!string.IsNullOrEmpty(error))
