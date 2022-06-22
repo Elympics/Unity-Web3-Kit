@@ -1,9 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Elympics;
 using Zenject;
-using System.Linq;
-using System.Collections.Generic;
 using DaftPopups;
 using TMPro;
 using System.Text;
@@ -14,6 +11,7 @@ public class MainMenuController : MonoBehaviour
 {
 	[SerializeField] private OrbsKingdomButton playButton = null;
 	[SerializeField] private TextMeshProUGUI displayedPlayerName = null;
+	[SerializeField] private TMP_InputField halfRemotePlayerId = null;
 	[SerializeField] private ErrorPopupData authenticatorClientError = null;
 	[SerializeField] private string matchmakingQueueBase = "Default";
 	[SerializeField] private string matchmakingQueueFree = "Free";
@@ -99,6 +97,26 @@ public class MainMenuController : MonoBehaviour
 		GameplayDataInput.PayoutValue = 0;
 		LoadMultiplayerMode($"{matchmakingQueueBase}:{matchmakingQueueFree}");
 	}
+
+	[ReferencedByUnity]
+	public void PlayLocal()
+	{
+		ElympicsLobbyClient.Instance.PlayOffline();
+	}
+
+	[ReferencedByUnity]
+	public void PlayHalfRemote()
+	{
+		var playerId = int.Parse(halfRemotePlayerId.text);
+		ElympicsLobbyClient.Instance.PlayHalfRemote(playerId);
+	}
+
+	[ReferencedByUnity]
+	public void StartHalfRemoteServer()
+	{
+		ElympicsLobbyClient.Instance.StartHalfRemoteServer();
+	}
+
 
 	public void LoadMultiplayerMode(string queueName = null, bool showPopup = true, string betResponse = null)
 	{
