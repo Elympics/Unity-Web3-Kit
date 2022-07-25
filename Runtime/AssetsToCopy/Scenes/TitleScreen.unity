@@ -130,9 +130,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 344686826275269158, guid: 393036131d460cf4aafa92b31c34fafe, type: 3}
+      propertyPath: m_Name
+      value: Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 344686826988428745, guid: 393036131d460cf4aafa92b31c34fafe, type: 3}
+      propertyPath: m_Name
+      value: WaitingForLoginView
+      objectReference: {fileID: 0}
+    - target: {fileID: 344686827133715324, guid: 393036131d460cf4aafa92b31c34fafe, type: 3}
+      propertyPath: m_Name
+      value: WalletSelectionView
+      objectReference: {fileID: 0}
     - target: {fileID: 344686827649704676, guid: 393036131d460cf4aafa92b31c34fafe, type: 3}
       propertyPath: m_Name
-      value: WalletConnectionController
+      value: TitleScreenController
       objectReference: {fileID: 0}
     - target: {fileID: 344686827649704683, guid: 393036131d460cf4aafa92b31c34fafe, type: 3}
       propertyPath: m_RootOrder

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-public class WalletConnectionSceneController : MonoBehaviour
+public class TitleScreenController : MonoBehaviour
 {
 	[SerializeField] private GameObject selectionWindow = null;
 	[SerializeField] private GameObject connectingWindow = null;
@@ -14,10 +14,10 @@ public class WalletConnectionSceneController : MonoBehaviour
 	[SerializeField] private GameObject playAsGuestButton = null;
 
 	[Header("Loading texts")]
-	[SerializeField] private string connectingMetamaskText = "Logging...";
-	[SerializeField] private string networkCheckingText = "Network checking...";
-	[SerializeField] private string walletAddressText = "Wallet address checking...";
-	[SerializeField] private string matchStartedText = "Account has approve token, game starting...";
+	[SerializeField] private string connectingProviderText = "Logging in...";
+	[SerializeField] private string checkingNetworkText = "Checking network connection...";
+	[SerializeField] private string fetchingWalletAddressText = "Fetching wallet address...";
+	[SerializeField] private string startingGameText = "Starting game...";
 
 	private SCController controller;
 	private IOrbiesSmartContractAPI smartContractAPI;
@@ -26,8 +26,6 @@ public class WalletConnectionSceneController : MonoBehaviour
 	private IScenesLoader scenesLoader;
 	private SmartContractConfig smartContractConfig;
 	private GameObject[] allWindows;
-
-	private const int minimalTokenAllowedValue = 10;
 
 	[Inject]
 	public void Inject(IWalletAPI walletApi, IOrbiesSmartContractAPI smartContractAPI, ITokenAPI tokenAPI, IScenesLoader scenesLoader, SCController controller, SmartContractConfig smartContractConfig)
@@ -62,7 +60,7 @@ public class WalletConnectionSceneController : MonoBehaviour
 		tokenAPI.Init();
 		walletApi.ReloadPageOnAccountChange();
 
-		ChangeLoggingText(connectingMetamaskText);
+		ChangeLoggingText(connectingProviderText);
 		ChangeWindowTo(connectingWindow);
 
 		StartCoroutine(ConnectionSequence());
@@ -78,9 +76,9 @@ public class WalletConnectionSceneController : MonoBehaviour
 	{
 		var connectionStages = new IStageMetamaskConnection[]
 		{
-			new ConnectionToMetamaskStage(controller, connectingMetamaskText),
-			new CheckConnectionStage(controller,networkCheckingText),
-			new WalletAddressStage(controller,walletAddressText),
+			new ConnectionToMetamaskStage(controller, connectingProviderText),
+			new CheckConnectionStage(controller, checkingNetworkText),
+			new WalletAddressStage(controller, fetchingWalletAddressText),
 		};
 
 		foreach (var stage in connectionStages)
@@ -96,7 +94,7 @@ public class WalletConnectionSceneController : MonoBehaviour
 			}
 		}
 
-		ChangeLoggingText(matchStartedText);
+		ChangeLoggingText(startingGameText);
 		StartGame();
 	}
 
